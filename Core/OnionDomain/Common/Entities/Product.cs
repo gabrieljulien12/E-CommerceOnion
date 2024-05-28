@@ -8,12 +8,12 @@ namespace OnionDomain.Common.Entities
 {
     public class Product:BaseEntity
     {
-        public required string Tittle { get; set; }
-        public required string Desciription { get; set; }
-        public required int BrandId { get; set; }
-        public required decimal Price { get; set; }
+        public  string Tittle { get; set; }
+        public  string Desciription { get; set; }
+        public  int BrandId { get; set; }
+        public decimal Price { get; set; }
 
-        public required decimal Discount { get; set;}
+        public decimal Discount { get; set;}
         //Relations proporties
         public virtual Brand brand { get; set; }
         public virtual ICollection<Catagory> Catagories { get; set; }

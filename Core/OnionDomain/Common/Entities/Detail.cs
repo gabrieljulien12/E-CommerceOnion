@@ -18,9 +18,9 @@ namespace OnionDomain.Common.Entities
             Description = description;
             CatagoryId = catagoryıd;
         }
-        public required string Title { get; set; }
-        public required string Description { get; set; } 
-        public  required int CatagoryId { get; set; }
+        public  string Title { get; set; }
+        public  string Description { get; set; } 
+        public   int CatagoryId { get; set; }
 
         // relation proporties
         public virtual Catagory Catagory { get; set; }
