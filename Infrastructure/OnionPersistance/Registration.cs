@@ -20,6 +20,7 @@ namespace OnionPersistance
             opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped(typeof(IReadReposirtory<>), typeof(ReadRepository<>));
+            services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
 
         }
