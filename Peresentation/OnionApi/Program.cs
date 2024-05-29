@@ -1,5 +1,8 @@
 using OnionPersistance;
 using OnionAplication;
+using OnionMapper;
+using Microsoft.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,6 +19,7 @@ builder.Configuration.SetBasePath(env.ContentRootPath)
 
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddAplication();
+builder.Services.AddAutoMappers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
