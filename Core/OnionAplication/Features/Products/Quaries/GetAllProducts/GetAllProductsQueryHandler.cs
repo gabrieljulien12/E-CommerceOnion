@@ -1,4 +1,7 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using OnionAplication.Dto;
+using OnionAplication.Interface.AutoMappers;
 using OnionAplication.Interface.UnitOfWorks;
 using OnionDomain.Common.Entities;
 using System;
@@ -12,24 +15,22 @@ namespace OnionAplication.Features.Products.Quaries.GetAllProducts
     public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQueryRequest, IList<GetAllProductsQueryResponse>>
     {
         private readonly IUnitOfWork unitOfWork;
+        private readonly IMapper mapper;
 
-        public GetAllProductsQueryHandler(IUnitOfWork unitOfWork)
+        public GetAllProductsQueryHandler(IUnitOfWork unitOfWork, IMapper _mapper)
         {
             this.unitOfWork = unitOfWork;
+            mapper = _mapper;
         }
         public async Task<IList<GetAllProductsQueryResponse>> Handle(GetAllProductsQueryRequest request, CancellationToken cancellationToken)
         {
-            var products = await unitOfWork.GetReadReposirtory<Product>().GetAllAsync();
-            List<GetAllProductsQueryResponse> response = new();
-            foreach (var product in products)
-                response.Add(new GetAllProductsQueryResponse
-                {
-                    Tittle = product.Tittle,
-                    Desciription = product.Desciription,
-                    Price = product.Price - (product.Price * product.Discount /100),
-                    Discount = product.Discount,
-                });
-            return response;
+            var products = await unitOfWork.GetReadReposirtory<Product>().GetAllAsync(inculude: x => x.Include(b=> b.brand));
+            var brand = mapper.Map<BrandDto, Brand>(new Brand());
+
+
+
+            var map = mapper.Map<GetAllProductsQueryResponse ,Product>(products);
+            return map;
         }
     }
 }
