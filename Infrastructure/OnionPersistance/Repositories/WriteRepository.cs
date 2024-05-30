@@ -34,6 +34,11 @@ namespace OnionPersistance.Repositories
             await Task.Run(() => Baglantı.Remove(entity));
         }
 
+        public async Task HardDeleteAsync(IList<T> entity)
+        {
+            await Task.Run(() => Baglantı.RemoveRange(entity));
+        }
+
         public async Task<T> UpdateAsync(T entity)
         {
             await Task.Run(() => Baglantı.Update(entity));

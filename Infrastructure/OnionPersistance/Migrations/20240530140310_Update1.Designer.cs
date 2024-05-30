@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnionPersistance.Context;
 
@@ -11,9 +12,11 @@ using OnionPersistance.Context;
 namespace OnionPersistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240530140310_Update1")]
+    partial class Update1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,21 +52,21 @@ namespace OnionPersistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 157, DateTimeKind.Local).AddTicks(2165),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 984, DateTimeKind.Local).AddTicks(2482),
                             IsDeleted = false,
                             Name = "Asus"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 157, DateTimeKind.Local).AddTicks(2174),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 984, DateTimeKind.Local).AddTicks(2491),
                             IsDeleted = false,
                             Name = "Apple"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 157, DateTimeKind.Local).AddTicks(2182),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 984, DateTimeKind.Local).AddTicks(2498),
                             IsDeleted = false,
                             Name = "Acer"
                         });
@@ -101,7 +104,7 @@ namespace OnionPersistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 157, DateTimeKind.Local).AddTicks(7172),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 984, DateTimeKind.Local).AddTicks(7483),
                             IsDeleted = false,
                             Name = "Elektronik",
                             ParentId = 0,
@@ -110,7 +113,7 @@ namespace OnionPersistance.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 157, DateTimeKind.Local).AddTicks(7181),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 984, DateTimeKind.Local).AddTicks(7492),
                             IsDeleted = false,
                             Name = "Moda",
                             ParentId = 0,
@@ -119,7 +122,7 @@ namespace OnionPersistance.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 157, DateTimeKind.Local).AddTicks(7188),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 984, DateTimeKind.Local).AddTicks(7501),
                             IsDeleted = false,
                             Name = "Bilgisayar",
                             ParentId = 1,
@@ -128,12 +131,27 @@ namespace OnionPersistance.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 157, DateTimeKind.Local).AddTicks(7195),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 984, DateTimeKind.Local).AddTicks(7508),
                             IsDeleted = false,
                             Name = "Kazak",
                             ParentId = 1,
                             Priorty = 2
                         });
+                });
+
+            modelBuilder.Entity("OnionDomain.Common.Entities.CatagoryProducti", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CatagoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "CatagoryId");
+
+                    b.HasIndex("CatagoryId");
+
+                    b.ToTable("catagoryProductis");
                 });
 
             modelBuilder.Entity("OnionDomain.Common.Entities.Detail", b =>
@@ -172,7 +190,7 @@ namespace OnionPersistance.Migrations
                         {
                             Id = 1,
                             CatagoryId = 1,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 158, DateTimeKind.Local).AddTicks(1441),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 985, DateTimeKind.Local).AddTicks(1264),
                             Description = "RTX4090",
                             IsDeleted = false,
                             Title = "EkranKartı"
@@ -181,7 +199,7 @@ namespace OnionPersistance.Migrations
                         {
                             Id = 2,
                             CatagoryId = 3,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 158, DateTimeKind.Local).AddTicks(1450),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 985, DateTimeKind.Local).AddTicks(1272),
                             Description = "DDR5",
                             IsDeleted = true,
                             Title = "Ram"
@@ -190,7 +208,7 @@ namespace OnionPersistance.Migrations
                         {
                             Id = 3,
                             CatagoryId = 4,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 158, DateTimeKind.Local).AddTicks(1457),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 985, DateTimeKind.Local).AddTicks(1280),
                             Description = "Yün",
                             IsDeleted = false,
                             Title = "Hammadde"
@@ -239,7 +257,7 @@ namespace OnionPersistance.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 160, DateTimeKind.Local).AddTicks(8487),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 987, DateTimeKind.Local).AddTicks(7710),
                             Desciription = "blablabla",
                             Discount = 15m,
                             IsDeleted = false,
@@ -250,7 +268,7 @@ namespace OnionPersistance.Migrations
                         {
                             Id = 2,
                             BrandId = 2,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 160, DateTimeKind.Local).AddTicks(8499),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 987, DateTimeKind.Local).AddTicks(7721),
                             Desciription = "blablabla",
                             Discount = 15m,
                             IsDeleted = false,
@@ -261,7 +279,7 @@ namespace OnionPersistance.Migrations
                         {
                             Id = 3,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 5, 30, 17, 37, 9, 160, DateTimeKind.Local).AddTicks(8508),
+                            CreatedDate = new DateTime(2024, 5, 30, 17, 3, 8, 987, DateTimeKind.Local).AddTicks(7730),
                             Desciription = "blablabla",
                             Discount = 15m,
                             IsDeleted = false,
@@ -270,19 +288,23 @@ namespace OnionPersistance.Migrations
                         });
                 });
 
-            modelBuilder.Entity("OnionDomain.Common.Entities.ProductCatagory", b =>
+            modelBuilder.Entity("OnionDomain.Common.Entities.CatagoryProducti", b =>
                 {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.HasOne("OnionDomain.Common.Entities.Catagory", "Catagory")
+                        .WithMany("CatagoryProductis")
+                        .HasForeignKey("CatagoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<int>("CatagoryId")
-                        .HasColumnType("int");
+                    b.HasOne("OnionDomain.Common.Entities.Product", "Product")
+                        .WithMany("CatagoryProductis")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasKey("ProductId", "CatagoryId");
+                    b.Navigation("Catagory");
 
-                    b.HasIndex("CatagoryId");
-
-                    b.ToTable("productCatagories");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("OnionDomain.Common.Entities.Detail", b =>
@@ -305,25 +327,6 @@ namespace OnionPersistance.Migrations
                         .IsRequired();
 
                     b.Navigation("brand");
-                });
-
-            modelBuilder.Entity("OnionDomain.Common.Entities.ProductCatagory", b =>
-                {
-                    b.HasOne("OnionDomain.Common.Entities.Catagory", "Catagory")
-                        .WithMany("CatagoryProductis")
-                        .HasForeignKey("CatagoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OnionDomain.Common.Entities.Product", "Product")
-                        .WithMany("CatagoryProductis")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Catagory");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("OnionDomain.Common.Entities.Catagory", b =>
