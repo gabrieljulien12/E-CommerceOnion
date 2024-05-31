@@ -24,7 +24,7 @@ namespace OnionDomain.Common.Entities
         
         public  int Priorty { get; set; }
 
-        public virtual ICollection<Detail> Details { get; set; }
+        public   ICollection<Detail> Details { get; set; }
         public  ICollection<ProductCatagory> CatagoryProductis { get; set; }
 
     }
