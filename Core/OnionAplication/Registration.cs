@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using OnionAplication.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace OnionAplication
         public static void AddAplication(this IServiceCollection services)
         {
             var assembly = Assembly.GetExecutingAssembly();
+            services.AddTransient<ExceptionMiddlewear>();
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembly));
         }

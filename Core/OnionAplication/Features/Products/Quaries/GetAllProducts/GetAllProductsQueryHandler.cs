@@ -30,7 +30,8 @@ namespace OnionAplication.Features.Products.Quaries.GetAllProducts
 
 
             var map = mapper.Map<GetAllProductsQueryResponse ,Product>(products);
-            return map;
+            //return map;
+            throw new Exception("ErorMessage");
         }
     }
 }
