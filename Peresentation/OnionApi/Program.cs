@@ -2,6 +2,7 @@ using OnionPersistance;
 using OnionAplication;
 using OnionMapper;
 using Microsoft.Extensions.DependencyInjection;
+using OnionAplication.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.ConfigureExceptionHendlingMiddlewear();
 
 app.UseAuthorization();
 
